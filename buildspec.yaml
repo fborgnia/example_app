@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+        python: 3.7
+  build:
+    commands:
+      - apt-get install wget unzip
+      #- wget -q https://releases.hashicorp.com/terraform/0.12.10/terraform_0.12.10_linux_amd64.zip -O terraform.zip
+      - wget https://releases.hashicorp.com/terraform/0.11.0/terraform_0.11.0_linux_amd64.zip -O terraform.zip
+      - unzip ./terraform.zip -d /usr/local/bin/
+      - terraform init
+      - terraform workspace select $STAGE
+      - terraform validate 
+      - terraform plan -var-file="variables/$STAGE.tfvars" -out="tfplan"
+      - terraform apply "tfplan"
+
+artifacts:
+  files:
+    -  tfplan
