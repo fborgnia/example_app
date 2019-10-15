@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "364168241140-example-app-releases"
+    bucket = "pipeline-dev-example-app-ulwydhpc"
     key    = "terraform_state_files/example_app.tfstate"
     region = "us-east-1"
   }
