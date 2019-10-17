@@ -4,13 +4,13 @@ proxy:
   logs: yes
 phases:
   install:
-    runtime-versions:
-        python: 3.7
-  build:
     commands:
       - apt-get install wget unzip
       - wget -q https://releases.hashicorp.com/terraform/0.12.10/terraform_0.12.10_linux_amd64.zip -O terraform.zip
       - unzip ./terraform.zip -d /usr/local/bin/
+  build:
+    commands:
+      - docker run -e AWS_DEFAULT_REGION -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI aws/codebuild/standard:1.0
       - terraform init
       - terraform workspace select $STAGE
       - terraform validate 
