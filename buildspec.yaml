@@ -10,11 +10,11 @@ phases:
       - unzip ./terraform.zip -d /usr/local/bin/
   build:
     commands:
-      - TF_LOG=debug terraform init
-      - TF_LOG=debug terraform workspace select $STAGE
-      - TF_LOG=debug terraform validate 
-      - TF_LOG=debug terraform plan -var-file="variables/$STAGE.tfvars" -out="tfplan"
-      - TF_LOG=debug terraform apply "tfplan"
+      - terraform init
+      - terraform workspace select $STAGE
+      - terraform validate 
+      - terraform plan -var-file="variables/$STAGE.tfvars" -out="tfplan"
+      - terraform apply "tfplan"
 artifacts:
   files:
     -  tfplan
