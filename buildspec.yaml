@@ -14,9 +14,9 @@ phases:
       - aws s3 ls
       - mkdir .aws
       - curl -o security-credentials.json http://169.254.170.2$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
-      - export AWS_ACCESS_KEY_ID=$(cat security-credentials.json | ./jq -r '.AccessKeyId')
-      - export AWS_SECRET_ACCESS_KEY=$(cat security-credentials.json | ./jq -r '.SecretAccessKey')
-      - export AWS_SECURITY_TOKEN=$(cat security-credentials.json | ./jq -r '.Token')
+      - export AWS_ACCESS_KEY_ID=$(cat security-credentials.json | jq -r '.AccessKeyId')
+      - export AWS_SECRET_ACCESS_KEY=$(cat security-credentials.json | jq -r '.SecretAccessKey')
+      - export AWS_SECURITY_TOKEN=$(cat security-credentials.json | jq -r '.Token')
       - mkdir .aws
       - echo '[default]' > .aws/credentials
       - echo aws_access_key_id=$AWS_ACCESS_KEY_ID >> .aws/credentials
