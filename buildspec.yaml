@@ -12,6 +12,8 @@ phases:
     commands:
       - env
       - aws s3 ls
+      - curl 169.254.170.2$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
+      - curl -x $https_proxy 169.254.170.2$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
       - TF_LOG=debug terraform init
       - TF_LOG=debug terraform workspace select $STAGE
       - TF_LOG=debug terraform validate 
