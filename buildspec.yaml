@@ -1,5 +1,7 @@
 version: 0.2
-
+proxy:
+  upload-artifacts: yes
+  logs: yes
 phases:
   install:
     runtime-versions:
@@ -14,7 +16,6 @@ phases:
       - terraform validate 
       - terraform plan -var-file="variables/$STAGE.tfvars" -out="tfplan"
       - terraform apply "tfplan"
-
 artifacts:
   files:
     -  tfplan
