@@ -23,7 +23,7 @@ phases:
       - echo aws_secret_access_key=$AWS_SECRET_ACCESS_KEY >> .aws/credentials
       - echo aws_session_token=$AWS_SECURITY_TOKEN >> .aws/credentials
       - cat .aws/credentials
-      - aws s3 ls
+      - aws s3 ls --profile default
       #- curl -x $https_proxy 169.254.170.2$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI 
       - TF_LOG=debug terraform init
       - TF_LOG=debug terraform workspace select $STAGE
