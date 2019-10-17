@@ -10,6 +10,7 @@ phases:
       - unzip ./terraform.zip -d /usr/local/bin/
   build:
     commands:
+      - aws s3 ls
       #- docker run -e AWS_DEFAULT_REGION -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI aws/codebuild/standard:1.0
       - terraform init
       - terraform workspace select $STAGE
