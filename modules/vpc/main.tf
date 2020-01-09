@@ -19,7 +19,7 @@ resource "aws_vpc" "default" {
 resource "aws_subnet" "private_1b" {
   vpc_id     = "${aws_vpc.default.id}"
   cidr_block = "10.13.1.0/24"
-  availability_zone = "us-east-1b"
+  availability_zone = "eu-west-1b"
   map_public_ip_on_launch = false
 
   tags = {
@@ -30,11 +30,11 @@ resource "aws_subnet" "private_1b" {
 resource "aws_subnet" "private_1a" {
   vpc_id     = "${aws_vpc.default.id}"
   cidr_block = "10.13.2.0/24"
-  availability_zone = "us-east-1a"
+  availability_zone = "eu-west-1a"
   map_public_ip_on_launch = false
 
   tags = {
-    Name = "${var.name}-private-1b"
+    Name = "${var.name}-private-1a"
   }
 }
 
@@ -78,7 +78,7 @@ resource "aws_security_group" "default" {
 
 resource "aws_vpc_endpoint" "logs" {
   vpc_id            = "${aws_vpc.default.id}"
-  service_name      = "com.amazonaws.us-east-1.logs"
+  service_name      = "com.amazonaws.eu-west-1.logs"
   vpc_endpoint_type = "Interface"
 
   security_group_ids = [
