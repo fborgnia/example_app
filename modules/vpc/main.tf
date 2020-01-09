@@ -1,10 +1,10 @@
 provider "aws" {
-    region = "us-east-1"
+    region = "eu-west-1"
     #profile = "saml"
 } 
 
 variable "name" {
-  type = string
+  type = "string"
 }
 
 resource "aws_vpc" "default" {

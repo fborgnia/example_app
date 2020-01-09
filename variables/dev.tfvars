@@ -1,2 +1,2 @@
-name = "example_app"
-ami_id = "ami-0b69ea66ff7391e80"
+name = "example-app"
+ami_id = "ami-0713f98de93617bb4"
