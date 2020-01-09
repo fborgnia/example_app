@@ -11,9 +11,9 @@ phases:
   build:
     commands:
       - terraform init
-      - terraform workspace select $STAGE
+      - terraform workspace select $BUILD_ENV
       - terraform validate 
-      - terraform plan -var-file="variables/$STAGE.tfvars" -out="tfplan"
+      - terraform plan -var-file="variables/$BUILD_ENV.tfvars" -out="tfplan"
       - terraform apply "tfplan"
 artifacts:
   files:
