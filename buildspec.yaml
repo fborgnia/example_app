@@ -12,7 +12,7 @@ phases:
     commands:
       - terraform init
       - terraform workspace select $BUILD_ENV
-      - terraform validate 
+      - terraform validate -var-file="variables/$BUILD_ENV.tfvars" 
       - terraform plan -var-file="variables/$BUILD_ENV.tfvars" -out="tfplan"
       - terraform apply "tfplan"
 artifacts:
